@@ -22,6 +22,7 @@
                 ],
                 'launch' => [
                     'web_url' => $url,
+                    'container' => 'panel',
                 ],
             ],
             'permissions' => [
