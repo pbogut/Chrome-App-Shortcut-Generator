@@ -3,6 +3,7 @@
         $icon = isset($_FILES['icon']['tmp_name']) && $_FILES['icon']['tmp_name'] ? $_FILES['icon']['tmp_name'] : dirname(__FILE__) . '/icon.png';
         $name = isset($_POST['name']) && $_POST['name'] ? $_POST['name'] : 'Chrome App Shortcut Generator';
         $url = isset($_POST['url']) && $_POST['url'] ? $_POST['url'] : 'http://www.smeagol.pl/apps/google-app-shortcut-generator';
+        $container = isset($_POST['container']) && $_POST['container'] == 1 ? 'panel' : 'tab';
 
         if (strpos($url, 'http') !== 0) {
             $url = "http://$url";
@@ -22,7 +23,7 @@
                 ],
                 'launch' => [
                     'web_url' => $url,
-                    'container' => 'panel',
+                    'container' => $container,
                 ],
             ],
             'permissions' => [
@@ -77,6 +78,13 @@
                     <div class="form-group">
                         <label for="url">Url</label>
                         <input class="form-control" type="text" id="url" name="url" value="http://www.smeagol.pl/apps/google-app-shortcut-generator"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="container">Container</label>
+                        <select class="form-control" id="container" name="container">
+                            <option value="1">Panel</option>
+                            <option value="2">Tab</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="icon">Icon file</label>
